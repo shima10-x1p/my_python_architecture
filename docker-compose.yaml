@@ -1,6 +1,27 @@
-version: '3.6'
 services:
   service:
     image: todo-sample
     ports:
       - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:latest
+    container_name: todo_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: todo
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d todo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  postgres_data:
