@@ -15,6 +15,19 @@ dev = [
 
 [tool.ruff]
 line-length = 100
+exclude = [
+    "openapi_server/apis/__init__.py",
+    "openapi_server/apis/task_api.py",
+    "openapi_server/apis/task_api_base.py",
+    "openapi_server/impl/__init__.py",
+    "openapi_server/main.py",
+    "openapi_server/models/__init__.py",
+    "openapi_server/models/extra_models.py",
+    "openapi_server/models/task.py",
+    "openapi_server/models/task_create.py",
+    "openapi_server/models/task_update.py",
+    "openapi_server/security_api.py",
+]
 
 [tool.ruff.format]
 docstring-code-format = true
