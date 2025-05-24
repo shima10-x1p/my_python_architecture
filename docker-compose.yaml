@@ -8,6 +8,12 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    environment:
+      APP_POSTGRES_USER: user
+      APP_POSTGRES_PASSWORD: password
+      APP_POSTGRES_HOST: todo_db
+      APP_POSTGRES_PORT: 5432
+      APP_POSTGRES_DB: todo
   db:
     image: postgres:latest
     container_name: todo_db

@@ -291,6 +291,7 @@ dependencies = [
     { name = "fastapi", extra = ["all"] },
     { name = "injector" },
     { name = "psycopg2-binary" },
+    { name = "pydantic-settings" },
 ]
 
 [package.dev-dependencies]
@@ -303,6 +304,7 @@ requires-dist = [
     { name = "fastapi", extras = ["all"], specifier = ">=0.115.12" },
     { name = "injector", specifier = ">=0.22.0" },
     { name = "psycopg2-binary", specifier = ">=2.9.10" },
+    { name = "pydantic-settings", specifier = ">=2.9.1" },
 ]
 
 [package.metadata.requires-dev]
