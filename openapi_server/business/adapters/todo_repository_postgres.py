@@ -1,7 +1,7 @@
 """PostgreSQL用ToDoリポジトリアダプタ (psycopg2使用)."""
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 
 import psycopg2
 from injector import inject
@@ -118,7 +118,7 @@ class TodoRepositoryPostgres(TodoRepository):
         # UUIDで一意なIDを生成
         task_id = str(uuid.uuid4())
         # 現在時刻(UTC)を取得
-        now = datetime.now(datetime.UTC).isoformat()
+        now = datetime.now(UTC).isoformat()
         query = (
             "INSERT INTO tasks (id, title, description, is_done, created_at, updated_at) "
             "VALUES (%s, %s, %s, %s, %s, %s)"
@@ -152,7 +152,7 @@ class TodoRepositoryPostgres(TodoRepository):
 
         """
         # 更新日時を現在時刻(UTC)で設定
-        now = datetime.now(datetime.UTC).isoformat()
+        now = datetime.now(UTC).isoformat()
         query = (
             "UPDATE tasks SET title = %s, description = %s, is_done = %s, updated_at = %s "
             "WHERE id = %s"
